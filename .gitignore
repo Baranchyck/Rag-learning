@@ -5,9 +5,14 @@ build/
 dist/
 wheels/
 *.egg-info
+.mypy_cache/
+.ruff_cache/
 
 # Virtual environments
 .venv
 
 # Secrets
 .env
+
+# Data Base
+data/
