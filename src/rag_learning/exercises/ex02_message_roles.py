@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 from langchain_groq import ChatGroq
 
-CODE_SNIPPED = CODE_SNIPPET = """\
+CODE_SNIPPED = """\
     def add_item(item, items=[]):
         try:
             items.append(item)

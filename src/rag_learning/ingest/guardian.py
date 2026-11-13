@@ -15,13 +15,23 @@ API_URL = "https://content.guardianapis.com/search"
 PAGE_SIZE = 200  # максимум, який дозволяє API
 FIELDS = "headline,trailText,byline,starRating,bodyText"
 
-PREFIX_RE = re.compile(r"^[\w ]*album of the (?:week|month)(?:\s+review)?\s*[–:-]\s*", re.IGNORECASE)
-TITLE_RE = re.compile(r"^(?P<artist>[^:]+?):\s*(?P<album>.+?)\s+(?:(?:album|soundtrack)\s+)?review\b", re.IGNORECASE)
+PREFIX_RE = re.compile(
+    r"^[\w ]*album of the (?:week|month)(?:\s+review)?\s*[–:-]\s*", re.IGNORECASE
+)
+TITLE_RE = re.compile(
+    r"^(?P<artist>[^:]+?):\s*(?P<album>.+?)\s+(?:(?:album|soundtrack)\s+)?review\b",
+    re.IGNORECASE,
+)
 NO_REVIEW_RE = re.compile(r"^(?P<artist>[^:]+?):\s*(?P<album>.+?)(?:\s+[–-]\s+|\s*$)")
-ARTIST_ONLY_RE = re.compile(r"^(?P<artist>[^:–-]+?)\s+(?:(?:album|soundtrack)\s+)?review\s*[–-]", re.IGNORECASE)
+ARTIST_ONLY_RE = re.compile(
+    r"^(?P<artist>[^:–-]+?)\s+(?:(?:album|soundtrack)\s+)?review\s*[–-]", re.IGNORECASE
+)
 DIGEST_RE = re.compile(r"^Home listening\b", re.IGNORECASE)
 TAG_RE = re.compile(r"<[^>]+>")
-OTHER_PICKS_RE = re.compile(r"\s*(?:Also out this (?:week|month)|This (?:week|month)[’']s other picks)\b.*$", re.DOTALL)
+OTHER_PICKS_RE = re.compile(
+    r"\s*(?:Also out this (?:week|month)|This (?:week|month)[’']s other picks)\b.*$",
+    re.DOTALL,
+)
 JUNK_RE = re.compile(r"\s*Listen on (Apple Music|Spotify)[^.]*$")
 WS_RE = re.compile(r"\s+")
 
@@ -122,10 +132,18 @@ def fetch_items(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Завантажити рецензії на альбоми з Guardian API")
-    parser.add_argument("--from-date", default="2018-01-01", help="YYYY-MM-DD; 'all' — весь архів")
-    parser.add_argument("--max-pages", type=int, help="обмежити кількість сторінок (для перевірки)")
-    parser.add_argument("--out", type=Path, default=Path("data/processed/guardian_reviews.jsonl"))
+    parser = argparse.ArgumentParser(
+        description="Завантажити рецензії на альбоми з Guardian API"
+    )
+    parser.add_argument(
+        "--from-date", default="2018-01-01", help="YYYY-MM-DD; 'all' — весь архів"
+    )
+    parser.add_argument(
+        "--max-pages", type=int, help="обмежити кількість сторінок (для перевірки)"
+    )
+    parser.add_argument(
+        "--out", type=Path, default=Path("data/processed/guardian_reviews.jsonl")
+    )
     args = parser.parse_args()
 
     from rag_learning.config import GUARDIAN_API_KEY

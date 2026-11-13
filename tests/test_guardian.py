@@ -22,8 +22,16 @@ from rag_learning.ingest.guardian import clean_text, parse_headline
             "Enrico Rava Fearless Five with Joe Lovano",
             "Corners",
         ),
-        ("Jazz album of the month – Julian Siegel Quartet: Vista", "Julian Siegel Quartet", "Vista"),
-        ("Messiaen: Catalogue d'Oiseaux – Aimard's birds soar", "Messiaen", "Catalogue d'Oiseaux"),
+        (
+            "Jazz album of the month – Julian Siegel Quartet: Vista",
+            "Julian Siegel Quartet",
+            "Vista",
+        ),
+        (
+            "Messiaen: Catalogue d'Oiseaux – Aimard's birds soar",
+            "Messiaen",
+            "Catalogue d'Oiseaux",
+        ),
         ("Mø review – plenty of swagger", "Mø", None),
         ("Some interview that is not a review", None, None),
     ],
